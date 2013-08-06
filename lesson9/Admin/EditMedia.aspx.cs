@@ -15,7 +15,7 @@ namespace lesson9.Admin
 
         protected void btnUploadMedia_Click(object sender, EventArgs e)
         {
-          string location = "/Medias/" + fupMedia.FileName;
+          string location = "/Media/" + fupMedia.FileName;
           fupMedia.SaveAs(AppDomain.CurrentDomain.BaseDirectory + location);
           BusinessRules.CMedia objPost = new BusinessRules.CMedia();
           objPost.Title = txtTitle.Text;
