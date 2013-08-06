@@ -16,11 +16,6 @@ namespace DemonSlayer.Admin
 
         protected void btnPost_Click(object sender, EventArgs e)
         {
-          BusinessRules.CPost objPost = new BusinessRules.CPost();
-          objPost.Post = txtPost.Text;
-          objPost.UserID = BusinessRules.CUser.getIDByName(HttpContext.Current.User.Identity.Name);
-          objPost.save();
-          Response.Redirect("/home.aspx", true);
         }
     }
 }

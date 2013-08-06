@@ -12,6 +12,7 @@ namespace BusinessRules
     SqlConnection objConn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["strConn"].ConnectionString);
     private string _post;
     private int _userID;
+    private int _postID;
 
     public string Post
     {
@@ -25,17 +26,52 @@ namespace BusinessRules
       set { _userID = value; }
     }
 
+    public int PostID
+    {
+      get { return _postID; }
+      set { _postID = value; }
+    }
+
     public void save()
     {
       objConn.Open();
-
-      string postSQL = "INSERT INTO posts (Post, UserID) VALUES ('" + Post + "', " + UserID + ")";
+      string postSQL = "";
+      if (PostID > 0)
+      {
+        postSQL = "UPDATE posts SET Post='" + Post + "', UserID='" + UserID + "' WHERE PostID='" + PostID + "';";
+      }
+      else
+      {
+        postSQL = "INSERT INTO posts (Post, UserID) VALUES ('" + Post + "', " + UserID + ")";
+      }
 
       SqlCommand objCmd = new SqlCommand(postSQL, objConn);
       objCmd.ExecuteNonQuery();
 
       objCmd.Dispose();
       objConn.Close();
+    }
+
+    public static string getPostByID(int postID)
+    {
+      string post = "";
+
+      SqlConnection objConn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["strConn"].ConnectionString);
+      objConn.Open();
+
+      string getPostSQL = "SELECT Post FROM posts WHERE PostID='" + postID + "'";
+
+      SqlCommand objCmd = new SqlCommand(getPostSQL, objConn);
+      SqlDataReader objRdr = objCmd.ExecuteReader();
+
+      while (objRdr.Read())
+      {
+        post = objRdr.GetString(0);
+      }
+
+      objCmd.Dispose();
+      objConn.Close();
+      return post;
     }
   }
 }

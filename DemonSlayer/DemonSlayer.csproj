@@ -65,6 +65,7 @@
     <Content Include="home.aspx" />
     <Content Include="login.aspx" />
     <Content Include="Media.aspx" />
+    <Content Include="post.aspx" />
     <Content Include="register.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Styles\Site.css" />
@@ -178,6 +179,13 @@
     <Compile Include="Media.aspx.designer.cs">
       <DependentUpon>Media.aspx</DependentUpon>
     </Compile>
+    <Compile Include="post.aspx.cs">
+      <DependentUpon>post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="post.aspx.designer.cs">
+      <DependentUpon>post.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
@@ -222,7 +230,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51559</DevelopmentServerPort>
+          <DevelopmentServerPort>54106</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
