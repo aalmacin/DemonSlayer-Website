@@ -112,5 +112,27 @@ namespace BusinessRules
           objConn.Close();
           return userID;
         }
+
+        public static string getNameByID(int userID)
+        {
+          string userName = "";
+
+          SqlConnection objConn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["strConn"].ConnectionString);
+          objConn.Open();
+
+          string getIDSQL = "SELECT Username FROM users WHERE UserID='" + userID + "'";
+
+          SqlCommand objCmd = new SqlCommand(getIDSQL, objConn);
+          SqlDataReader objRdr = objCmd.ExecuteReader();
+
+          while (objRdr.Read())
+          {
+            userName = objRdr.GetString(0);
+          }
+
+          objCmd.Dispose();
+          objConn.Close();
+          return userName;
+        }
     }
 }
