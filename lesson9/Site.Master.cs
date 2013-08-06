@@ -11,24 +11,20 @@ namespace lesson9
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //disable admin link if needed
+            NavigationMenu.Items[1].Enabled = false;
+            NavigationMenu.Items[2].Enabled = false;
+
             if (HttpContext.Current.User.IsInRole("Admin"))
             {
                 NavigationMenu.Items[1].Enabled = true;
+                NavigationMenu.Items[2].Enabled = true;
             }
-            else
-            {
-                NavigationMenu.Items[1].Enabled = false;
-            }
-
+           
             if (HttpContext.Current.User.IsInRole("User"))
             {
                 NavigationMenu.Items[2].Enabled = true;
             }
-            else
-            {
-                NavigationMenu.Items[2].Enabled = false;
-            }
+            
         }
     }
 }
