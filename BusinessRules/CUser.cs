@@ -134,5 +134,30 @@ namespace BusinessRules
           objConn.Close();
           return userName;
         }
+
+        public SqlDataReader getUsers()
+        {
+
+            objConn.Open();
+
+            string strSQL = "SELECT UserID, Username, Role FROM Users ORDER BY Username";
+            SqlCommand objCmd = new SqlCommand(strSQL, objConn);
+
+            SqlDataReader objRdr = objCmd.ExecuteReader();
+            return objRdr;
+
+        }
+
+        public void deleteUser(int UserID)
+        {
+            objConn.Open();
+            string strSQL = "DELETE FROM Users WHERE UserID = " + UserID.ToString();
+
+            SqlCommand objCmd = new SqlCommand(strSQL, objConn);
+            objCmd.ExecuteNonQuery();
+
+            objCmd.Dispose();
+            objConn.Close();
+        }
     }
 }
