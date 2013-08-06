@@ -90,5 +90,27 @@ namespace BusinessRules
             return role;
 
         }
+
+        public static int getIDByName(string username)
+        {
+          int userID = -1;
+
+          SqlConnection objConn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["strConn"].ConnectionString);
+          objConn.Open();
+
+          string getIDSQL = "SELECT UserID FROM users WHERE Username='" + username + "'";
+
+          SqlCommand objCmd = new SqlCommand(getIDSQL, objConn);
+          SqlDataReader objRdr = objCmd.ExecuteReader();
+
+          while (objRdr.Read())
+          {
+            userID = objRdr.GetInt32(0);
+          }
+
+          objCmd.Dispose();
+          objConn.Close();
+          return userID;
+        }
     }
 }
