@@ -16,6 +16,13 @@
 </div>
 
 <asp:button id="btnLogin" runat="server" text="Login" onclick="btnLogin_Click" />
+<div id="register section">
+<asp:HyperLink ID="RegisterLink" 
+                   runat="server"
+                   Text="Register Here"
+                   NavigateUrl="~/Register.aspx"
+                   ></asp:HyperLink>
+</div>
 
 
 </asp:content>
