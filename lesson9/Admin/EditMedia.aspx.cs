@@ -11,7 +11,18 @@ namespace lesson9.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+        }
 
+        protected void btnUploadMedia_Click(object sender, EventArgs e)
+        {
+          string location = "/Medias/" + fupMedia.FileName;
+          fupMedia.SaveAs(AppDomain.CurrentDomain.BaseDirectory + location);
+          BusinessRules.CMedia objPost = new BusinessRules.CMedia();
+          objPost.Title = txtTitle.Text;
+          objPost.Location = location;
+          objPost.UserID = BusinessRules.CUser.getIDByName(HttpContext.Current.User.Identity.Name);
+          objPost.save();
+          Response.Redirect("/Media.aspx", true);
         }
     }
 }

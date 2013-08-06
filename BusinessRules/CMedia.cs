@@ -3,21 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
-using System.Configuration;
 
 namespace BusinessRules
 {
-  public class CPost
+  public class CMedia
   {
     SqlConnection objConn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["strConn"].ConnectionString);
-    private string _post;
-    private int _userID;
 
-    public string Post
-    {
-      get { return _post; }
-      set { _post = value; }
-    }
+    private int _userID;
+    private string _title;
+    private string _location;
 
     public int UserID
     {
@@ -25,13 +20,25 @@ namespace BusinessRules
       set { _userID = value; }
     }
 
+    public string Title
+    {
+      get { return _title; }
+      set { _title = value; }
+    }
+
+    public string Location
+    {
+      get { return _location; }
+      set { _location = value; }
+    }
+
     public void save()
     {
       objConn.Open();
 
-      string postSQL = "INSERT INTO posts (Post, UserID) VALUES ('" + Post + "', " + UserID + ")";
+      string mediaSQL = "INSERT INTO media (Title, Location, UserID) VALUES ('" + Title + "', '" + Location + "', " + UserID + ")";
 
-      SqlCommand objCmd = new SqlCommand(postSQL, objConn);
+      SqlCommand objCmd = new SqlCommand(mediaSQL, objConn);
       objCmd.ExecuteNonQuery();
 
       objCmd.Dispose();
