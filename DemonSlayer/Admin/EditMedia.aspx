@@ -15,4 +15,19 @@
     <asp:Button ID="btnUploadMedia" runat="server" Text="Save" 
       onclick="btnUploadMedia_Click" />
   </div>
+  <div>
+    <asp:GridView ID="gvMedia" runat="server" AutoGenerateColumns="False" 
+      DataKeyNames="MediaID" onrowdeleting="gvMedia_RowDeleting"
+      onrowdatabound="gvMedia_RowDataBound">
+      <Columns>
+        <asp:BoundField DataField="MediaID" HeaderText="MediaID" InsertVisible="False" 
+          ReadOnly="True" SortExpression="MediaID" />
+        <asp:BoundField DataField="UserID" HeaderText="UserID" 
+          SortExpression="UserID" />
+        <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
+        <asp:BoundField DataField="Location" HeaderText="Location" SortExpression="Location" />
+        <asp:commandfield deletetext="Delete" headertext="Delete" ShowDeleteButton="true" />
+      </Columns>
+    </asp:GridView>
+  </div>
 </asp:Content>
