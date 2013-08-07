@@ -49,5 +49,32 @@ namespace BusinessRules
       objCmd.Dispose();
       objConn.Close();
     }
+
+    //get a list of all Media in the Media table
+    public SqlDataReader getMedia()
+    {
+
+      objConn.Open();
+      //query
+      string strSQL = "SELECT MediaID, UserID, Title, Location FROM Media";
+      SqlCommand objCmd = new SqlCommand(strSQL, objConn);
+
+      SqlDataReader objRdr = objCmd.ExecuteReader();
+      return objRdr;
+
+    }
+    //delete specified Media form table. needs MediaID
+    public void deleteMedia(int MediaID)
+    {
+      objConn.Open();
+      //query
+      string strSQL = "DELETE FROM Media WHERE MediaID = " + MediaID.ToString();
+
+      SqlCommand objCmd = new SqlCommand(strSQL, objConn);
+      objCmd.ExecuteNonQuery();
+
+      objCmd.Dispose();
+      objConn.Close();
+    }
   }
 }
