@@ -14,6 +14,7 @@ namespace BusinessRules
     private string _title;
     private string _location;
 
+    // Getters and setters.
     public int UserID
     {
       get { return _userID; }
@@ -32,12 +33,16 @@ namespace BusinessRules
       set { _location = value; }
     }
 
+    // Saves the media info in the media table.
     public void save()
     {
+      // Open a connection.
       objConn.Open();
 
+      // The query to save the media.
       string mediaSQL = "INSERT INTO media (Title, Location, UserID) VALUES ('" + Title + "', '" + Location + "', " + UserID + ")";
 
+      // Run the query.
       SqlCommand objCmd = new SqlCommand(mediaSQL, objConn);
       objCmd.ExecuteNonQuery();
 

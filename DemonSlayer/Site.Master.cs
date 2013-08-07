@@ -14,12 +14,14 @@ namespace DemonSlayer
             NavigationMenu.Items[1].Enabled = false;
             NavigationMenu.Items[2].Enabled = false;
 
+            // Enable links for admins to be accessible by admins.
             if (HttpContext.Current.User.IsInRole("Admin"))
             {
                 NavigationMenu.Items[1].Enabled = true;
                 NavigationMenu.Items[2].Enabled = true;
             }
-           
+
+            // Enable links for user to be accessible by user.
             if (HttpContext.Current.User.IsInRole("User"))
             {
                 NavigationMenu.Items[2].Enabled = true;

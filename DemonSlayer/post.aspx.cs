@@ -15,6 +15,7 @@ namespace DemonSlayer
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
+      // Create an instance of Post and populate it with the post values and save it to the db.
       BusinessRules.CPost objPost = new BusinessRules.CPost();
       objPost.Post = txtPost.Text;
       objPost.PostID = Convert.ToInt32(Request.QueryString["PostID"]);

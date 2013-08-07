@@ -17,17 +17,6 @@ namespace DemonSlayer
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            //this was just using web.config to check identities
-            //if (FormsAuthentication.Authenticate(txtUsername.Text, txtPassword.Text))
-            //{
-            //    //use the defaultURL in our web config after creating an auth ticket
-            //    FormsAuthentication.RedirectFromLoginPage(txtUsername.Text, true);
-            //}
-            //else
-            //{
-            //    lblError.Text = "Invalid Login";
-            //}
-
             BusinessRules.CUser objUser = new BusinessRules.CUser();
             string role;
 
