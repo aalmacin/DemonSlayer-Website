@@ -12,7 +12,7 @@
     <asp:FileUpload ID="fupMedia" runat="server" />
   </div>
   <div>
-    <asp:Button ID="btnUploadMedia" runat="server" Text="Button" 
+    <asp:Button ID="btnUploadMedia" runat="server" Text="Save" 
       onclick="btnUploadMedia_Click" />
   </div>
 </asp:Content>
