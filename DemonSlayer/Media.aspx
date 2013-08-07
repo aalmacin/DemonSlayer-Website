@@ -18,8 +18,8 @@
       <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
       <ItemStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
       <ItemTemplate>
-        UserID:
-        <asp:Label ID="UserIDLabel" runat="server" Text='<%# Eval("UserID") %>' />
+        Posted by:
+        <asp:Label ID="UserIDLabel" runat="server" Text='<%# BusinessRules.CUser.getNameByID(Convert.ToInt32(Eval("UserID"))) %>' />
         <br />
         Title:
         <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
