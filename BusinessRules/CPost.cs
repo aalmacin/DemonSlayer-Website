@@ -13,7 +13,7 @@ namespace BusinessRules
     private string _post;
     private int _userID;
     private int _postID;
-
+    //getters and setters
     public string Post
     {
       get { return _post; }
@@ -31,7 +31,8 @@ namespace BusinessRules
       get { return _postID; }
       set { _postID = value; }
     }
-
+    //create a new row in the db with saved info from form 
+    //or update an old post
     public void save()
     {
       objConn.Open();
@@ -51,14 +52,14 @@ namespace BusinessRules
       objCmd.Dispose();
       objConn.Close();
     }
-
+    //return a post specified by form. uses ID
     public static string getPostByID(int postID)
     {
       string post = "";
 
       SqlConnection objConn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["strConn"].ConnectionString);
       objConn.Open();
-
+      //query
       string getPostSQL = "SELECT Post FROM posts WHERE PostID='" + postID + "'";
 
       SqlCommand objCmd = new SqlCommand(getPostSQL, objConn);
@@ -73,19 +74,19 @@ namespace BusinessRules
       objConn.Close();
       return post;
     }
-
+    //get a list of all posts in db 
     public SqlDataReader getPosts()
     {
 
       objConn.Open();
-
+      //query
       string strSQL = "SELECT PostID, UserID, Post FROM Posts";
       SqlCommand objCmd = new SqlCommand(strSQL, objConn);
 
       SqlDataReader objRdr = objCmd.ExecuteReader();
       return objRdr;
     }
-
+    //delete a specified post. uses ID
     public void deletePost(int PostID)
     {
       objConn.Open();
