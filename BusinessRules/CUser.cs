@@ -39,20 +39,16 @@ namespace BusinessRules
             var hash = hashPassword(enteredPassword, storedSalt);
             return String.Equals(storedHash, hash);
         }
-
+        // register a new user in the db
         public void register(string username, string password, string role)
         {
-            //generate unique salt and hashed pw for the user
+            //random salt for each user
             string salt = getRandomSalt(12);
             string hashedPassword = hashPassword(password, salt);
 
             //ado code to interact w/db
             objConn.Open();
-            //string strSQL = "INSERT INTO Users (Username, Password, SaltString, Role) VALUES ('" +
-            //    username + "','" + hashedPassword + "','" + salt + "','" + role + "');";
-
-            //SqlCommand objCmd = new SqlCommand(strSQL, objConn);
-
+           
             SqlCommand objCmd = new SqlCommand("spRegister", objConn);
             objCmd.CommandType = System.Data.CommandType.StoredProcedure;
             objCmd.Parameters.AddWithValue("@Username", username);
@@ -64,10 +60,11 @@ namespace BusinessRules
             objCmd.Dispose();
             objConn.Close();
         }
-
+        // log in method, takes username and pass from login page
         public string login(string username, string password)
         {
             objConn.Open();
+            //query
             string strSQL = "SELECT * FROM Users WHERE Username = '" + username + "'";
             SqlCommand objCmd = new SqlCommand(strSQL, objConn);
 
@@ -90,7 +87,7 @@ namespace BusinessRules
             return role;
 
         }
-
+        //find a row in the db with the same name
         public static int getIDByName(string username)
         {
           int userID = -1;
@@ -112,14 +109,14 @@ namespace BusinessRules
           objConn.Close();
           return userID;
         }
-
+        //find a row in the database table with the same id as one specified. Needs userID
         public static string getNameByID(int userID)
         {
           string userName = "";
 
           SqlConnection objConn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["strConn"].ConnectionString);
           objConn.Open();
-
+          //query
           string getIDSQL = "SELECT Username FROM users WHERE UserID='" + userID + "'";
 
           SqlCommand objCmd = new SqlCommand(getIDSQL, objConn);
@@ -134,12 +131,12 @@ namespace BusinessRules
           objConn.Close();
           return userName;
         }
-
+        //get a list of all users in the users table
         public SqlDataReader getUsers()
         {
 
           objConn.Open();
-
+          //query
           string strSQL = "SELECT UserID, Username, Role FROM Users ORDER BY Username";
           SqlCommand objCmd = new SqlCommand(strSQL, objConn);
 
@@ -147,12 +144,13 @@ namespace BusinessRules
           return objRdr;
 
         }
-
+        //delete specified user form table. needs UserID
         public void deleteUser(int UserID)
         {
           objConn.Open();
+          //query
           string strSQL = "DELETE FROM Users WHERE UserID = " + UserID.ToString();
-
+     
           SqlCommand objCmd = new SqlCommand(strSQL, objConn);
           objCmd.ExecuteNonQuery();
 
