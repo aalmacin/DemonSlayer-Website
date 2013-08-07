@@ -13,6 +13,7 @@ namespace DemonSlayer.Admin
         {
         }
 
+        //upload media info to media table in the db and upload th media to the sever
         protected void btnUploadMedia_Click(object sender, EventArgs e)
         {
           string location = "/Media/" + fupMedia.FileName;
