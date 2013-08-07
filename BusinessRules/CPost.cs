@@ -73,5 +73,29 @@ namespace BusinessRules
       objConn.Close();
       return post;
     }
+
+    public SqlDataReader getPosts()
+    {
+
+      objConn.Open();
+
+      string strSQL = "SELECT PostID, UserID, Post FROM Posts";
+      SqlCommand objCmd = new SqlCommand(strSQL, objConn);
+
+      SqlDataReader objRdr = objCmd.ExecuteReader();
+      return objRdr;
+    }
+
+    public void deletePost(int PostID)
+    {
+      objConn.Open();
+      string strSQL = "DELETE FROM Posts WHERE PostID = " + PostID.ToString();
+
+      SqlCommand objCmd = new SqlCommand(strSQL, objConn);
+      objCmd.ExecuteNonQuery();
+
+      objCmd.Dispose();
+      objConn.Close();
+    }
   }
 }

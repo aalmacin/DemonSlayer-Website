@@ -22,21 +22,12 @@ namespace DemonSlayer.Admin {
         protected global::System.Web.UI.WebControls.HyperLink createPost;
         
         /// <summary>
-        /// GridView1 control.
+        /// gvPosts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// AllPostSQL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource AllPostSQL;
+        protected global::System.Web.UI.WebControls.GridView gvPosts;
     }
 }
