@@ -7,27 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DemonSlayer.Admin {
+namespace DemonSlayer {
     
     
-    public partial class EditHomePage {
+    public partial class post {
         
         /// <summary>
-        /// createPost control.
+        /// txtPost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink createPost;
+        protected global::System.Web.UI.WebControls.TextBox txtPost;
         
         /// <summary>
-        /// gvPosts control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvPosts;
+        protected global::System.Web.UI.WebControls.Button btnSave;
     }
 }
